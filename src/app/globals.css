@@ -1,26 +1,246 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: #0A1128;
+  --color-primary-light: #1a2847;
+  --color-secondary: #B89F6B;
+  --color-secondary-light: #d4c199;
+  --color-neutral: #D1D5DB;
+  --color-accent-light: #F8F8F8;
+  --color-teal: #2E8B9F;
+  --color-teal-dark: #236c7d;
+  --color-teal-glow: #4fd1e5;
+
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-serif: "Playfair Display", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ========================== */
+/* BASE STYLES                */
+/* ========================== */
+body {
+  background-color: #0A1128;
+  color: #F8F8F8;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #2E8B9F;
+  color: white;
+}
+
+/* ========================== */
+/* GRADIENT TEXT               */
+/* ========================== */
+.text-brand-gradient {
+  background: linear-gradient(135deg, #B89F6B 0%, #d4c199 40%, #2E8B9F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: gradientMove 5s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ========================== */
+/* GRID BACKGROUND             */
+/* ========================== */
+.grid-bg {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-hero-pattern {
+  background: radial-gradient(circle at 50% 50%, rgba(46, 139, 159, 0.08) 0%, rgba(10, 17, 40, 0) 50%);
+}
+
+/* ========================== */
+/* FEATURE PILL LAYOUT         */
+/* ========================== */
+.feature-pill-section {
+  position: relative;
+  padding: 4rem 0;
+  overflow: hidden;
+}
+
+.pill-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #1a2847 0%, #15203b 100%);
+  z-index: 0;
+  transition: transform 0.5s ease;
+  border: 1px solid rgba(46, 139, 159, 0.1);
+}
+
+.pill-right .pill-bg {
+  right: -20%;
+  width: 70%;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+  border-right: none;
+  background: linear-gradient(to left, #0A1128, #1a2847);
+}
+
+.pill-left .pill-bg {
+  left: -20%;
+  width: 70%;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  border-left: none;
+  background: linear-gradient(to right, #0A1128, #1a2847);
+}
+
+@media (max-width: 1024px) {
+  .pill-right .pill-bg,
+  .pill-left .pill-bg {
+    width: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 2rem;
+    height: 100%;
+    border: 1px solid rgba(46, 139, 159, 0.1);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ========================== */
+/* SCROLL ANIMATIONS           */
+/* ========================== */
+.animate-on-scroll {
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.slide-in-left {
+  transform: translateX(-50px);
+}
+
+.slide-in-right {
+  transform: translateX(50px);
+}
+
+.fade-in-up {
+  transform: translateY(30px);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+
+/* ========================== */
+/* FLOAT ANIMATIONS            */
+/* ========================== */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+@keyframes float-fast {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+.animate-float-medium { animation: float-medium 5s ease-in-out infinite; }
+.animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
+
+/* ========================== */
+/* SPOTLIGHT CARD CSS          */
+/* ========================== */
+.spotlight-card {
+  position: relative;
+  background: #1a2847;
+  border-radius: 1rem;
+  padding: 1px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.spotlight-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: radial-gradient(
+    600px circle at var(--x) var(--y),
+    rgba(46, 139, 159, 0.6),
+    rgba(184, 159, 107, 0.1) 40%,
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.spotlight-card:hover .spotlight-bg {
+  opacity: 1;
+}
+
+.spotlight-content {
+  position: relative;
+  background: rgba(10, 17, 40, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: calc(1rem - 1px);
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+}
+
+/* ========================== */
+/* HERO IMAGE FLASHLIGHT       */
+/* ========================== */
+.hero-image-container {
+  --x: -500px;
+  --y: -500px;
+  position: relative;
+  overflow: visible;
+}
+
+.hero-base-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.05;
+  filter: grayscale(100%) brightness(0.5);
+  z-index: 1;
+}
+
+.hero-reveal-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 2;
+  filter: drop-shadow(0 0 3px #B89F6B)
+          drop-shadow(0 0 15px #B89F6B)
+          drop-shadow(0 0 60px #B89F6B)
+          brightness(1.1);
+  -webkit-mask-image: radial-gradient(circle 300px at var(--x) var(--y), black 10%, transparent 70%);
+  mask-image: radial-gradient(circle 300px at var(--x) var(--y), black 10%, transparent 70%);
+  will-change: mask-image;
+}
+
+/* ========================== */
+/* CUSTOM SHADOWS              */
+/* ========================== */
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(46, 139, 159, 0.3);
 }
