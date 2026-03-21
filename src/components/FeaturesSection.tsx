@@ -141,7 +141,7 @@ export default function FeaturesSection() {
         imageSrc="/images/quizzes v2.png"
         imageAlt="Revision Quizzes"
         className="mb-12"
-        buttonHref="https://app.nyaya.site/quizzes"
+        buttonHref="https://app.nyaya.site/quiz"
       />
     </section>
   );
