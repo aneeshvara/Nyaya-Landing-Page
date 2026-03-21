@@ -38,6 +38,9 @@ export const metadata: Metadata = {
     locale: "en_LK",
     type: "website",
   },
+  icons: {
+    icon: "/images/favicon.png",
+  },
   twitter: {
     card: "summary_large_image",
     title: "Nyaya | Sri Lankan AI-Powered Legal Learning Companion",
