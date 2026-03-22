@@ -16,7 +16,7 @@ export default function Footer() {
                         <span className="text-xl font-serif font-bold">Nyaya</span>
                     </div>
                     <div className="text-neutral text-sm">
-                        &copy; 2025 Nyaya. All rights reserved.
+                        &copy; 2026 Nyaya. All rights reserved.
                     </div>
                 </div>
                 {/* Disclaimer */}

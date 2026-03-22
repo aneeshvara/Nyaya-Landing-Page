@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { MapPin, Mail, Loader2, CheckCircle, XCircle } from "lucide-react";
+import { MapPin, Mail, Loader2, CheckCircle, XCircle, Instagram, Linkedin } from "lucide-react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -67,7 +67,7 @@ export default function ContactSection() {
             </p>
 
             <div className="space-y-6 mb-12">
-              <div className="flex items-start gap-4 group">
+              {/* <div className="flex items-start gap-4 group">
                 <div className="w-10 h-10 rounded-full bg-teal/10 flex items-center justify-center text-teal mt-1 group-hover:bg-teal group-hover:text-white transition-colors">
                   <MapPin className="w-5 h-5" />
                 </div>
@@ -75,14 +75,51 @@ export default function ContactSection() {
                   <h4 className="font-bold text-white">Visit Us</h4>
                   <p className="text-neutral text-sm">Colombo, Sri Lanka</p>
                 </div>
-              </div>
+              </div> */}
               <div className="flex items-start gap-4 group">
                 <div className="w-10 h-10 rounded-full bg-teal/10 flex items-center justify-center text-teal mt-1 group-hover:bg-teal group-hover:text-white transition-colors">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-white">Email Us</h4>
-                  <p className="text-neutral text-sm">contact@nyaya.site</p>
+                  <h4 className="font-bold text-white">Email</h4>
+                  <a
+                    href="mailto:contact@nyaya.site"
+                    className="text-neutral text-sm hover:text-teal transition-colors"
+                  >
+                    contact@nyaya.site
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 group">
+                <div className="w-10 h-10 rounded-full bg-teal/10 flex items-center justify-center text-teal mt-1 group-hover:bg-teal group-hover:text-white transition-colors">
+                  <Instagram className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-white">Instagram</h4>
+                  <a
+                    href="https://www.instagram.com/nyaya.lk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral text-sm hover:text-teal transition-colors"
+                  >
+                    nyaya.lk
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 group">
+                <div className="w-10 h-10 rounded-full bg-teal/10 flex items-center justify-center text-teal mt-1 group-hover:bg-teal group-hover:text-white transition-colors">
+                  <Linkedin className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-white">LinkedIn</h4>
+                  <a
+                    href="https://www.linkedin.com/company/nyayalk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral text-sm hover:text-teal transition-colors"
+                  >
+                    Nyaya
+                  </a>
                 </div>
               </div>
             </div>
