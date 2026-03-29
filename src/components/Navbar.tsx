@@ -110,7 +110,7 @@ export default function Navbar() {
                         >
                             Contact
                         </a>
-                        <a href="#" className="text-teal font-bold">
+                        <a href="https://app.nyaya.site" className="text-teal font-bold">
                             Get Started
                         </a>
                     </div>
